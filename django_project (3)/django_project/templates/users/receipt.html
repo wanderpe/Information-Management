@@ -1,0 +1,45 @@
+<!-- receipt.html -->
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="receipt-container">
+        <h1>Payment Receipt</h1>
+        <p>Thank you for your payment!</p>
+
+        <!-- Display payment details dynamically based on payment method -->
+        <div class="payment-details">
+            <strong>Payment Method:</strong> {{ payment_method }}
+            <br>
+            <strong>Transaction ID:</strong> {{ transaction_id }}
+            <br>
+            <strong>Total Price:</strong> ₱{{ total_price }}
+        </div>
+
+        <h2>Products:</h2>
+        <ul>
+            {% for product in products %}
+                <li>{{ product.name }} - Quantity: {{ product.quantity }} - Price: ₱{{ product.price }}</li>
+            {% endfor %}
+        </ul>
+
+        <!-- Display additional details based on payment method -->
+        {% if payment_method == 'gcash' %}
+            <p>Additional details for Gcash payment.</p>
+        {% elif payment_method == 'paymaya' %}
+            <p>Additional details for Paymaya payment.</p>
+        {% elif payment_method == 'visa' %}
+            <p>Additional details for Visa payment.</p>
+        {% else %}
+            <p>No specific payment details available for the chosen method.</p>
+        {% endif %}
+
+        <p>Your payment has been successfully processed. If you have any questions, please contact our support team.</p>
+        <br><button type="button" onclick="goBack()">Back</button>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+{% endblock %}

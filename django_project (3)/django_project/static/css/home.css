@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Popins', sans-serif;
+}
+
+.header {
+    width: 100%;
+    min-height: 100vh;
+    background: #44ce7e;
+    color: #525252;
+}
+
+nav {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10%;
+    background: #1a1a1a1a;
+    position: relative;
+}
+
+.logo {
+    width: 120px;
+}
+
+.profile-user-pic {
+    width: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-left: 30px;
+}
+
+nav ul {
+    width: 100%;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline-block;
+    list-style: none;
+    margin: 10px 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.profile-sub-menu-wrap {
+    position: absolute;
+    top: 100%;
+    right: 10%;
+    width: 320px;
+    max-height: 0px;
+    overflow: hidden;
+    transition: max-height 0.5s;
+}
+
+.profile-sub-menu-wrap.open-menu {
+    max-height: 400px;
+}
+
+.profile-sub-menu {
+    background: #8CABFF;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 5px;
+}
+
+.profile-user-info {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.profile-user-info h3 {
+    font-weight: 500;
+}
+
+.profile-user-info h5 {
+    font-weight: 500;
+    top: 65%;
+    position: absolute;
+    left: 29%;
+}
+
+.profile-user-info img {
+    width: 60px;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.profile-sub-menu hr {
+    border: 0;
+    height: 1px;
+    background: #ccc;
+    margin: 15px 0 10px;
+}
+
+.profile-sub-menu-link img {
+    width: 24px;
+    height: 24px;
+    background-color: #e5e5e5;
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.profile-sub-menu-link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: #525252;
+    margin: 12px 0;
+}
+
+.profile-sub-menu-link p {
+    width: 100%;
+}
+
+.register-login-menu {
+    display: flex;
+    align-items: center;
+    background-color: #4477CE;  
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+.menu-link {
+    text-decoration: none;
+    color: #fff;  
+    font-weight: bold;
+    margin: 0 10px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+}
+
+.menu-link:hover {
+    background-color: #365a9c;  
+    color: #fff;
+}
+
+.menu-separator {
+    margin: 0 5px;
+    color: #fff;
+}
+
+.cart-icon {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-count {
+    position: absolute;
+    top: -8px; 
+    right: -8px; 
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+}
+
+
+/* your_app/static/css/styles.css */
+
+body {
+    background-color: #44ce7e;
+    color: #0b0b0b;
+}
+
+.form-container {
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #1a7a3d; /* Background color from your home */
+}
+
+h2 {
+    text-align: center;
+    color: #fff; /* Text color from your home */
+}
+
+label {
+    color: #fff; /* Text color from your home */
+}
+
+input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff; /* Background color for form fields */
+    color: #000; /* Text color for form fields */
+}
+
+button {
+    padding: 10px;
+    background-color: rgb(36, 147, 97);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3; /* Adjusted color on hover */
+}
+
+p {
+    color: #fff; /* Text color from your home */
+}
+
+a {
+    color: #007bff;
+}
+
+a:hover {
+    color: #0056b3; /* Adjusted color on hover */
+}

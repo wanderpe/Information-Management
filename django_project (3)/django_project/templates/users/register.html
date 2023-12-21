@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+
+<div class="form-container">
+    <h2>Register</h2>
+    <form method="post" style="display: flex; flex-direction: column;">
+        {% csrf_token %}
+        {{ form.username.label_tag }} <br>
+        {{ form.username }} <br><br>
+
+        {{ form.email.label_tag }} <br>
+        {{ form.email }} <br><br>
+
+        {{ form.password1.label_tag }} <br>
+        {{ form.password1 }} <br><br>
+
+        {{ form.password2.label_tag }} <br>
+        {{ form.password2 }} <br><br>
+
+        <button type="submit">Register</button>
+        <br><button type="button" onclick="goBack()">Back</button>
+        <p>Already has an account? <a href="{% url 'login' %}">Login</a></p>
+        
+    </form>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+{% endblock %}

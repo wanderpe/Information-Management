@@ -1,0 +1,23 @@
+/* gcash_payment.css */
+
+/* Center the container */
+.gcash-payment-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-top: 20px;
+    padding-left: 160px;
+    background-color: #069e7b;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+}
+
+/* Style the Gcash number */
+.gcash-number {
+    margin-top: 20px;
+}
+
+/* Style the Confirm Payment button */
+#confirmPayment {
+    margin-top: 20px;
+}

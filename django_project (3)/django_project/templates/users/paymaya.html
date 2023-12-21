@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/paymaya.css' %}">
+<div class="payment-container">
+    <h1>PayMaya Payment</h1>
+    <p>Follow the instructions below to complete your payment using PayMaya:</p>
+    <ol>
+        <li>Open your PayMaya app on your mobile device.</li>
+        <li>Select the "Send Money" option.</li>
+        <li>Enter the recipient details and amount.</li>
+        <!-- Add more steps as needed -->
+    </ol>
+    <p>After completing the payment, click the "Confirm Payment" button below:</p>
+    <button class="btn btn-primary" id="confirmPayment">Confirm Payment</button>
+    <br><button type="button" onclick="goBack()">Back</button>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+
+    document.getElementById('confirmPayment').addEventListener('click', function () {
+        // Redirect to the receipt page
+        window.location.href = '{% url "receipt" %}';
+    });
+</script>
+{% endblock %}

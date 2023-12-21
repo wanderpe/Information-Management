@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/gcash.css' %}">
+<div class="gcash-payment-container">
+    <h1>Gcash Payment</h1>
+    <p>Follow the instructions below to complete your payment using Gcash:</p>
+    <ol>
+        <br><p>Open your Gcash app on your mobile device.</p>
+        <p>Choose the "Send Money" option.</p>
+        <p>Enter the Gcash number provided below:</p>
+    </ol>
+    <div class="gcash-number">
+        <strong>Gcash Number:</strong> <span class="number">(+63) 943-500-9727</span>
+    </div>
+    <p>After sending the payment, click the "Confirm Payment" button below:</p>
+    <button class="btn btn-primary" id="confirmPayment">Confirm Payment</button>
+    <br><button type="button" onclick="goBack()">Back</button>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+
+    document.getElementById('confirmPayment').addEventListener('click', function () {
+        // Redirect to the receipt page
+        window.location.href = '{% url "receipt" %}';
+    });
+</script>
+{% endblock %}

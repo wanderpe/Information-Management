@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/visa.css' %}">
+<div class="payment-container">
+    <h1>Visa Payment</h1>
+    <p>Follow the instructions below to complete your payment using Visa:</p>
+    <ol>
+        <li>Enter your Visa card details.</li>
+        <li>Provide the cardholder name, card number, expiration date, and CVV.</li>
+        <!-- Add more steps as needed -->
+    </ol>
+    <p>After entering the card details, click the "Confirm Payment" button below:</p>
+    <button class="btn btn-primary" id="confirmPayment">Confirm Payment</button>
+    <br><button type="button" onclick="goBack()">Back</button>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+
+    document.getElementById('confirmPayment').addEventListener('click', function () {
+        // Redirect to the receipt page
+        window.location.href = '{% url "receipt" %}';
+    });
+</script>
+{% endblock %}

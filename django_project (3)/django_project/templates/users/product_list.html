@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{%static 'css/product_list.css' %}">
+<h1>Product List</h1>
+<p><a href="{%url 'cart' %}">Cart</a></p>
+
+<form class="d-flex" role="search" method="POST" action="{% url 'search-view' %}"   >
+    {% csrf_token %}
+    <input
+       class="form-control me-2"
+       type="search"
+       placeholder="Search"
+       name="search_query"
+       required aria-label="Search"
+    >
+    <button class="btn btn-outline-success" type="submit">Search</button> 
+</form>
+
+
+
+{% for product in products %}
+<div class="product-card">
+    <div class="product-image">
+        <img src="{{ product.image }}" alt="{{ product.name }}">
+    </div>
+    <a href="{% url 'product_details' product.id %}">{{ product.name }}</a><br>
+    <div class="product-description">{{ product.description }}</div>
+    <div class="product-price"> ₱ {{ product.price }}</div>
+    <form action="{% url 'add-to-cart' product.id %}" method="post">
+        {% csrf_token %}
+        <button class="add-to-cart-btn">Add to Cart</button>
+    </form>
+</div>
+
+{% endfor %}
+<br><button type="button" onclick="goBack()">Back</button>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="header">
+    <nav>
+        <img src="{% static 'images/logo.svg' %}" alt="" class="logo">
+        <ul>
+            <li><a href="{%url 'home'%}" onmouseover="this.style.padding='20px'; this.style.borderRadius='20px'; this.style.backgroundColor='#0f8915'" onmouseout="this.style.padding=''; this.style.borderRadius=''; this.style.backgroundColor=''">Home</a></li>
+            <li><a href="{%url 'product-list'%}" onmouseover="this.style.padding='20px'; this.style.borderRadius='20px'; this.style.backgroundColor='#0f8915'" onmouseout="this.style.padding=''; this.style.borderRadius=''; this.style.backgroundColor=''">Products</a></li>
+            <li><a href="{% url 'about' %}" onmouseover="this.style.padding='20px'; this.style.borderRadius='20px'; this.style.backgroundColor='#0f8915'" onmouseout="this.style.padding=''; this.style.borderRadius=''; this.style.backgroundColor=''">About</a></li>
+            <li><a href="{% url 'contact' %}" onmouseover="this.style.padding='20px'; this.style.borderRadius='20px'; this.style.backgroundColor='#0f8915'" onmouseout="this.style.padding=''; this.style.borderRadius=''; this.style.backgroundColor=''">Contact</a></li>
+        </ul>
+        
+
+        {% if user.is_authenticated %}
+        <div class="cart-icon">
+            <a href="{% url 'cart' %}" class="view-cart-link">
+                <img src="{% static 'images/shopping-cart.png' %}" alt="Cart" width="43" height="43">
+            </a>
+            {% if cart_count == 0 %}
+            <span></span>
+            {% else %}
+            <span class="cart-count">{{ cart_count }}</span>
+            {% endif %}
+        </div>
+        {% if request.user.profile.profile_image %}
+        <img src="{{ request.user.profile.profile_image.url }}" alt="" class="profile-user-pic" onclick="toggleMenu()">
+        {% else %}
+        <img src="{% static 'images/user.png' %}" alt="Default Image" class="profile-user-pic" onclick="toggleMenu()">
+        {% endif %}
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+                <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        <div class="profile-sub-menu-wrap" id="profile-subMenu">
+            <div class="profile-sub-menu">
+                <div class="profile-user-info">
+                    {% if request.user.profile.profile_image %}
+                    <img src="{{ request.user.profile.profile_image.url }}" alt="">
+                    {% else %}
+                    <img src="{% static 'images/mypic.png' %}" alt="Default Image">
+                    {% endif %}
+                    <h3>{{ request.user.profile.full_name }}</h3>
+                    <h5>{{ request.user.profile.designation }}</h5>
+                </div>
+                <hr>
+                <a href="{% url 'user-profile' %}" class="profile-sub-menu-link">
+                    <img src="{% static 'images/profile.png' %}" alt="">
+                    <p>Edit Profile</p>
+                </a>
+                <a href="#" class="profile-sub-menu-link">
+                    <img src="{% static 'images/setting.png' %}" alt="">
+                    <p>Setting & Privacy</p>
+                </a>
+                <a href="#" class="profile-sub-menu-link">
+                    <img src="{% static 'images/help.png' %}" alt="">
+                    <p>Help & Support</p>
+                </a>
+                <a href="{% url 'logout' %}" class="profile-sub-menu-link">
+                    <img src="{% static 'images/logout.png' %}" alt="">
+                    <p>Logout</p>
+                </a>
+            </div>
+        </div>
+        {% else %}
+        <div class="register-login-menu">
+            <a href="{% url 'login' %}" class="menu-link">Register</a>
+            <span class="menu-separator">|</span>
+            <a href="{% url 'register' %}" class="menu-link">Login</a>
+        </div>
+        {% endif %}
+    </nav>
+    <img src="{% static 'images/background2.jpg' %}" alt="Description of your image">
+</div>
+
+
+
+{% endblock %}

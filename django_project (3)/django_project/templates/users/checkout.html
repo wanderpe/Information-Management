@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/checkout.css' %}">
+<div class="checkout-container">
+    <h1>Checkout</h1>
+    <form id="payment-form" action="" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="modeOfPayment">Mode of Payment</label>
+            <select class="form-control" id="modeOfPayment" name="modeOfPayment">
+                <option value="gcash">Gcash</option>
+                <option value="paymaya">Paymaya</option>
+                <option value="visa">Visa</option>
+            </select>
+        </div>
+        <button type="button" class="btn btn-primary" id="proceedToPayment">Proceed to Payment</button>
+        <br><button type="button" onclick="goBack()">Back</button>
+    </form>
+</div>
+
+<script>
+    function goBack() {
+        window.history.back();
+    }
+    document.getElementById('proceedToPayment').addEventListener('click', function () {
+        var selectedPaymentMode = document.getElementById('modeOfPayment').value;
+
+        // Redirect based on the selected payment mode
+        switch (selectedPaymentMode) {
+            case 'gcash':
+                window.location.href = '{% url "gcash" %}';
+                break;
+            case 'paymaya':
+                window.location.href = '{% url "paymaya" %}';
+                break;
+            case 'visa':
+                window.location.href = '{% url "visa" %}';
+                break;
+            default:
+                // Handle other cases or show an error message
+                break;
+        }
+    });
+</script>
+{% endblock %}
